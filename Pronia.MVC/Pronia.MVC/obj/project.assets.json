@@ -1483,6 +1483,19 @@
           }
         }
       },
+      "Pronia.BL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Pronia.DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Pronia.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pronia.BL.dll": {}
+        }
+      },
       "Pronia.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -3973,6 +3986,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Pronia.BL/1.0.0": {
+      "type": "project",
+      "path": "../Services/Pronia.BL.csproj",
+      "msbuildProject": "../Services/Pronia.BL.csproj"
+    },
     "Pronia.DAL/1.0.0": {
       "type": "project",
       "path": "../Pronia.DAL/Pronia.DAL.csproj",
@@ -3982,7 +4000,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.EntityFrameworkCore.Design >= 8.0.11",
-      "Pronia.DAL >= 1.0.0"
+      "Pronia.BL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4013,8 +4031,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\resul\\Desktop\\Pronia\\Pronia.MVC\\Pronia.DAL\\Pronia.DAL.csproj": {
-              "projectPath": "C:\\Users\\resul\\Desktop\\Pronia\\Pronia.MVC\\Pronia.DAL\\Pronia.DAL.csproj"
+            "C:\\Users\\resul\\Desktop\\Pronia\\Pronia.MVC\\Services\\Pronia.BL.csproj": {
+              "projectPath": "C:\\Users\\resul\\Desktop\\Pronia\\Pronia.MVC\\Services\\Pronia.BL.csproj"
             }
           }
         }

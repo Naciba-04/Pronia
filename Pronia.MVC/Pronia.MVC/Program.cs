@@ -1,17 +1,32 @@
-namespace Pronia.MVC;
+using Microsoft.EntityFrameworkCore;
+using Pronia.BL.Services.Abstractions;
+using Pronia.BL.Services.Concretes;
+using Pronia.DAL.Contexts;
 
-public class Program
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+
+string? connectionStr = builder.Configuration.GetConnectionString("Acer");
+
+builder.Services.AddDbContext<ProniaDBContext>(opt =>
 {
-    public static void Main(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddControllersWithViews();
-        var app = builder.Build();
+    opt.UseSqlServer(connectionStr);
+});
 
-        app.MapControllerRoute(
-            name:"default",
-            pattern:"{controller=Home}/{action=Index}/{id?}"
-            );
-        app.Run();
-    }
-}
+builder.Services.AddScoped<ISliderItemService, SliderItemService>();
+
+var app = builder.Build();
+
+app.MapControllerRoute(
+
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+
+    );
+
+
+app.Run();
+

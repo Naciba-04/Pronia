@@ -10,12 +10,10 @@ namespace Pronia.DAL.Contexts;
 
 public class ProniaDBContext:DbContext
 {
-    public readonly string _connectionStr = @"Server=.\SQLEXPRESS;Database=ProniaDB;Trusted_Connection=True;TrustServerCertificate=True";
     public DbSet<SliderItem>SliderItems { get; set; }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public ProniaDBContext(DbContextOptions<ProniaDBContext> opt) : base(opt)
     {
-        optionsBuilder.UseSqlServer(_connectionStr);
-        base.OnConfiguring(optionsBuilder);
+
     }
 }
 

@@ -141,3 +141,5 @@ C:\Users\resul\Desktop\Pronia\Pronia.MVC\Pronia.MVC\obj\Debug\net8.0\refint\Pron
 C:\Users\resul\Desktop\Pronia\Pronia.MVC\Pronia.MVC\obj\Debug\net8.0\Pronia.MVC.pdb
 C:\Users\resul\Desktop\Pronia\Pronia.MVC\Pronia.MVC\obj\Debug\net8.0\Pronia.MVC.genruntimeconfig.cache
 C:\Users\resul\Desktop\Pronia\Pronia.MVC\Pronia.MVC\obj\Debug\net8.0\ref\Pronia.MVC.dll
+C:\Users\resul\Desktop\Pronia\Pronia.MVC\Pronia.MVC\bin\Debug\net8.0\Pronia.BL.dll
+C:\Users\resul\Desktop\Pronia\Pronia.MVC\Pronia.MVC\bin\Debug\net8.0\Pronia.BL.pdb
