@@ -21,7 +21,11 @@ public class SliderItemService : ISliderItemService
     public async Task CreateSliderItemAsync(SliderItem sliderItem)
     {
         await _context.SliderItems.AddAsync(sliderItem);
-        await _context.SaveChangesAsync();
+       int rows= await _context.SaveChangesAsync();
+        if (rows != 1)
+        {
+            throw new Exception($"Somthing went wrong in creating process");
+        }
     }
 
     public async Task SoftDeleteSliderItemAsync(int id)
@@ -34,6 +38,8 @@ public class SliderItemService : ISliderItemService
         }
 
         baseSliderItem.IsDeleted = true;
+        baseSliderItem.LastModifiedDate = DateTime.Now;
+        baseSliderItem.DeletedDate= DateTime.Now;
         await _context.SaveChangesAsync();
     }
 
@@ -61,13 +67,34 @@ public class SliderItemService : ISliderItemService
         return sliderItems;
     }
 
-    public SliderItem GetSliderItemById(int id)
+    public async Task<SliderItem> GetSliderItemByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        SliderItem? sliderItem = await _context.SliderItems.FindAsync(id);
+        if (sliderItem is null)
+        {
+            throw new Exception($"Slider item not found with this id({id})");
+        }
+        return sliderItem;
     }
 
-    public void UpdateSliderItem(int id, SliderItem sliderItem)
+    public async Task UpdateSliderItemAsync(int id, SliderItem sliderItem)
     {
-        throw new NotImplementedException();
+        if (id != sliderItem.Id)
+        {
+            throw new Exception($"Slider Items ids are not same");
+        }
+        SliderItem? baseSliderItem = await _context.SliderItems.AsNoTracking().SingleOrDefaultAsync(s => s.Id == id && !s.IsDeleted);
+        if (baseSliderItem is null)
+        {
+            throw new Exception($"Slider Item not found with this id({id})");
+        }
+        baseSliderItem.Title= sliderItem.Title; 
+        baseSliderItem.ShortDescription= sliderItem.ShortDescription;
+        baseSliderItem.Offer= sliderItem.Offer;
+        baseSliderItem.ImgPath= sliderItem.ImgPath;
+        baseSliderItem.LastModifiedDate = DateTime.Now;
+        _context.SliderItems.Update(sliderItem);
+        await _context.SaveChangesAsync();
+
     }
 }
